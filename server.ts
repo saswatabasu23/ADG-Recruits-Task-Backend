@@ -1,8 +1,9 @@
-import express from 'express';
+import express, { Errback } from 'express';
 import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import helmet from 'helmet';
 import mongoose from 'mongoose';
+import router from './routes';
 
 import dotenv from 'dotenv';
 dotenv.config();
@@ -20,6 +21,8 @@ app.use(bodyParser.urlencoded({
 
 app.use(helmet());
 app.use(morgan("dev"));
+app.use('router', router);
+
 
 const PORT = process.env.PORT || 5500;
 app.listen(PORT, () => {
@@ -28,25 +31,8 @@ app.listen(PORT, () => {
 
 const uri = process.env.MONGODB_URI;
 
-mongoose.connect(uri, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    })
+mongoose.connect(uri as string)
     .then(() =>
         console.log("Database is connected!"))
 
     .catch((err) => console.error(err))
-
-
-//error handling
-app.use((err, req, res, next) => {
-    console.log(err);
-    if (typeof err == 'string') {
-        return res.status(400).send({
-            message: err,
-        });
-    }
-    return res.status(400).send({
-        message: err.message,
-    });
-});

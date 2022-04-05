@@ -1,6 +1,7 @@
-import Blog from "model";
+import { Request, Response } from "express";
+import Blog from "./model";
 
-async function getAllBlogs(req, res) {
+async function getAllBlogs(req: Request, res: Response) {
     try {
         const blogs = await Blog.find();
         res.status(200).json(blogs);
@@ -12,7 +13,7 @@ async function getAllBlogs(req, res) {
     }
 }
 
-async function getBlogById(req, res) {
+async function getBlogById(req: Request, res: Response) {
     try {
         const blog = await Blog.findById(req.params.id);
         res.status(200).json(blog);
@@ -24,7 +25,7 @@ async function getBlogById(req, res) {
     }
 }
 
-async function createBlog(req, res) {
+async function createBlog(req: Request, res: Response) {
     try {
         const title = req.body.title;
         const details = req.body.details;
@@ -43,7 +44,7 @@ async function createBlog(req, res) {
     }
 }
 
-async function updateBlog(req, res) {
+async function updateBlog(req: Request, res: Response) {
     try {
         const title = req.body.title;
         const details = req.body.details;
@@ -60,7 +61,7 @@ async function updateBlog(req, res) {
     }
 }
 
-async function deleteBlog(req, res) {
+async function deleteBlog(req: Request, res: Response) {
     try {
         const blog = await Blog.findByIdAndDelete(req.params.id);
         res.status(200).send({
