@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({
 
 app.use(helmet());
 app.use(morgan("dev"));
-app.use('router', router);
+app.use('/', router);
 
 
 const PORT = process.env.PORT || 5500;

@@ -34,6 +34,7 @@ async function createBlog(req: Request, res: Response) {
             details
         });
         const savedBlog = await newBlog.save();
+        console.log(savedBlog);
         res.status(200).json(savedBlog);
     } catch (err) {
         console.log(err);

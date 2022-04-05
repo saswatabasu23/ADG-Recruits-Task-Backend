@@ -4,10 +4,9 @@ const router = express.Router();
 import functions from "./handler";
 
 
-
 //get blogs
 router.get('/', functions.getAllBlogs);
-router.get('/:id', functions.getBlogById);
+router.get('/getBlog/:id', functions.getBlogById);
 
 //post blogs
 router.post('/createBlog', functions.createBlog);
