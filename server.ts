@@ -1,16 +1,12 @@
-// import express, { Errback } from 'express';
-// import bodyParser from 'body-parser';
-// import morgan from 'morgan';
+import express, { Errback } from 'express';
+import bodyParser from 'body-parser';
+import morgan from 'morgan';
 import helmet from 'helmet';
 import mongoose from 'mongoose';
 import router from './routes';
 
 import dotenv from 'dotenv';
 dotenv.config();
-
-const express = require('express');
-const bodyParser=require('body-parser');
-const morgan=require('morgan');
 
 const app = express();
 
