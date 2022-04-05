@@ -1,4 +1,4 @@
-import Blog from "../models/blog";
+import Blog from "model";
 
 async function getAllBlogs(req, res) {
     try {
@@ -35,10 +35,11 @@ async function createBlog(req, res) {
         const savedBlog = await newBlog.save();
         res.status(200).json(savedBlog);
     } catch (err) {
-        res.status(500).send({
-            success: false,
-            message: "Error"
-        })
+        console.log(err);
+        // res.status(500).send({
+        //     success: false,
+        //     message: "Error"
+        // })
     }
 }
 
@@ -74,10 +75,10 @@ async function deleteBlog(req, res) {
     }
 }
 
-module.exports = {
+export default {
     getAllBlogs,
     getBlogById,
     createBlog,
     updateBlog,
     deleteBlog
-};
+}
