@@ -29,19 +29,20 @@ async function createBlog(req: Request, res: Response) {
     try {
         const title = req.body.title;
         const details = req.body.details;
+        const author = req.body.author;
         const newBlog = new Blog({
             title,
-            details
+            details,
+            author
         });
         const savedBlog = await newBlog.save();
         console.log(savedBlog);
         res.status(200).json(savedBlog);
     } catch (err) {
-        console.log(err);
-        // res.status(500).send({
-        //     success: false,
-        //     message: "Error"
-        // })
+        res.status(500).send({
+            success: false,
+            message: "Error"
+        })
     }
 }
 

@@ -9,6 +9,10 @@ const blogSchema = new Schema({
     details: {
         type: String,
         required: true
+    },
+    author:{
+        type: String,
+        required: true
     }
 });
 
