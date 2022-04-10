@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({
 
 app.use(helmet());
 app.use(morgan("dev"));
-app.use(cors);
+app.use(cors());
 app.use('/', router);
 
 
