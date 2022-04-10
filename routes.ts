@@ -10,7 +10,9 @@ router.get('/getBlog/:id', functions.getBlogById);
 
 //post blogs
 router.post('/createBlog', functions.createBlog);
-router.post('/deleteBlog/:id', functions.deleteBlog);
+
+//delete blogs
+router.delete('/deleteBlog/:id', functions.deleteBlog);
 
 //update blogs
 router.patch('/updateBlog/:id', functions.updateBlog);
