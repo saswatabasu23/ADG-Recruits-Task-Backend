@@ -13,6 +13,10 @@ const blogSchema = new Schema({
     details: {
         type: String,
         required: true
+    },
+    author: {
+        type: String,
+        required: true
     }
 });
 exports.default = mongoose_1.default.model("Blog", blogSchema);

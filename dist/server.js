@@ -8,6 +8,7 @@ const body_parser_1 = __importDefault(require("body-parser"));
 const morgan_1 = __importDefault(require("morgan"));
 const helmet_1 = __importDefault(require("helmet"));
 const mongoose_1 = __importDefault(require("mongoose"));
+const cors_1 = __importDefault(require("cors"));
 const routes_1 = __importDefault(require("./routes"));
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
@@ -22,6 +23,7 @@ app.use(body_parser_1.default.urlencoded({
 }));
 app.use((0, helmet_1.default)());
 app.use((0, morgan_1.default)("dev"));
+app.use((0, cors_1.default)());
 app.use('/', routes_1.default);
 const PORT = process.env.PORT || 5500;
 app.listen(PORT, () => {
