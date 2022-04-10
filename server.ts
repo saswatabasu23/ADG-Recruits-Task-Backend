@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import helmet from 'helmet';
 import mongoose from 'mongoose';
+import cors from 'cors';
 import router from './routes';
 
 import dotenv from 'dotenv';
@@ -21,6 +22,7 @@ app.use(bodyParser.urlencoded({
 
 app.use(helmet());
 app.use(morgan("dev"));
+app.use(cors);
 app.use('/', router);
 
 
