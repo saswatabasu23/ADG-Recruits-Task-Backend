@@ -10,6 +10,7 @@ const helmet_1 = __importDefault(require("helmet"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const cors_1 = __importDefault(require("cors"));
 const routes_1 = __importDefault(require("./routes"));
+const node_cron_1 = __importDefault(require("node-cron"));
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
@@ -33,3 +34,17 @@ const uri = process.env.MONGODB_URI;
 mongoose_1.default.connect(uri)
     .then(() => console.log("Database is connected!"))
     .catch((err) => console.error(err));
+//cron job for every 20 minutes
+var task = node_cron_1.default.schedule('*/20 * * * *', () => {
+    var request = require('request');
+    var options = {
+        'method': 'GET',
+        'url': 'https://git.heroku.com/adg-rec-task.git'
+    };
+    request(options, function (error, response) {
+        if (error)
+            throw new Error(error);
+        console.log(response.body);
+    });
+});
+task.start();
